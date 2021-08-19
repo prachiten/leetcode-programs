@@ -32,5 +32,5 @@ class Solution:
              if(target == nums[start_index]):
                     return start_index
 x=Solution()
-print(x.searchInsert([1,3,5,6],2))
+print(x.searchInsert([1,3,5,7,6],2))
             
