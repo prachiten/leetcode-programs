@@ -1,7 +1,10 @@
+from multiprocessing import Pool
+import time
 class Node:
     def __init__(self,value=None):
         self.value=value
         self.next=None
+
 
 class SLL:
     def __init__(self):
@@ -64,18 +67,44 @@ class Solution():
             
             head1=head1.next if head1 else None
             head2=head2.next if head2 else None
-            
-               
-           
-               
-
+        #end while
         return l3 #####  return list here
+def main(data1, data2):
+    start_time= time.time()
+    list1 = SLL()
+    for d in data1:
+        list1.addNode(Node(d))
+    #list1.printNode()
+    list2 = SLL()
+    for d in data2:
+        list2.addNode(Node(d))
 
-list1=SLL().addNode(Node(2)).addNode(Node(4)).addNode(Node(3)).addNode(Node(9))
-list1.printNode()
-list2=SLL().addNode(Node(5)).addNode(Node(6)).addNode(Node(4))
-list2.printNode()
-Solution(list1, list2).addNumbersInLists().printNode()  ###added this call - have not tested the program
+    #list2.printNode()
+    #nums=[list1,list2]
+    sol = Solution(list1, list2).addNumbersInLists()
+    end_time=time.time()
+    print(end_time-start_time)
+    return sol
+
+if __name__ == "__main__":
+    data_pairs =  [ [[2,3,4], [4,5,6]], 
+                    [[5,1,4], [3,2,8]] ]
+
+    parallel = True
+    if parallel == False:
+        for dp in data_pairs:
+            main(dp[0], dp[1]).printNode()
+    else:
+        p=Pool(len(data_pairs))
+        res=p.starmap(main, data_pairs)
+        for r in res:
+            r.printNode()
+    
+    
+
+
+
+##added this call - have not tested the program
 
 
 
