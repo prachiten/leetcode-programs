@@ -1,6 +1,6 @@
 from multiprocessing import Pool
 import time
-
+# factorial program
 def factorial(n):
     #ending condition
     if n <= 1:
@@ -8,7 +8,7 @@ def factorial(n):
 
     #reducing condition
     return n * factorial(n-1)
-
+# fibonacci by iteration
 def fib_iter(n):
     res = [0 for i in range(n)]
     res[0] = 1
@@ -17,6 +17,8 @@ def fib_iter(n):
         res[i] = res[i-1] + res[i-2]
     return res[n-1]
 
+    
+## fibonacci by recursion
 def fibonacci(n):
     if(n<=2):
         return 1
