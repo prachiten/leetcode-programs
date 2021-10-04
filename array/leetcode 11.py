@@ -1,21 +1,20 @@
 class Solution:
+    
     def maxArea(self, height):
-        if height:
-            arealist=[]
-            for i in range(0,len(height)-1):
-                counter=0
-                for j in range(i+1,len(height)):
-                    counter+=1
-                    print(height[i])
-                    print(height[j])
-                
-                    print(min(height[i],height[j])*counter)
-                
-                    arealist.append(min(height[i],height[j])*counter)
-                
-            maxarea=max(arealist)
-            return maxarea
-        else:
-            print("list empty")
+        width=len(height)-1
+        left_ptr=0
+        right_ptr=width
+        res=0
+        while(left_ptr!=right_ptr):
+            maxarea=min(height[left_ptr],height[right_ptr])*width
+            if(res<maxarea):
+                res=maxarea
+            width-=1
+            if(height[left_ptr]<=height[right_ptr]):
+                 left_ptr+=1
+            else:
+                right_ptr-=1
+        return res
+            
 x=Solution()
 print(x.maxArea([1,8,6,2,5,4,8,3,7]))
